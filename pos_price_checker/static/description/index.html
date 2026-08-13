@@ -1,0 +1,183 @@
+<div style="max-width:1140px; margin:0 auto; padding:0 16px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; color:#40524d;">
+
+    <section style="overflow:hidden; border-radius:24px; background:#073f35; margin:20px 0 34px;">
+        <div style="padding:44px 34px; background:linear-gradient(135deg,#073f35 0%,#0c8c68 54%,#14b983 100%);">
+            <div style="display:inline-block; width:58%; min-width:300px; vertical-align:middle; padding:16px 24px 16px 0; box-sizing:border-box;">
+                <p style="display:inline-block; margin:0 0 18px; padding:8px 16px; border-radius:999px; background:rgba(255,255,255,.16); color:#ffffff; font-weight:700;">
+                    POS Kisok Price Checker
+                </p>
+                <h1 style="margin:0; color:#ffffff; font-size:44px; line-height:1.15; font-weight:900;">
+                    Let customers scan and verify prices instantly
+                </h1>
+                <p style="max-width:640px; margin:20px 0 0; color:#dff8ef; font-size:19px; line-height:1.65;">
+                    A public mobile page for each PoS store. Customers scan a product barcode and see
+                    the exact store price.
+                </p>
+                <div style="margin-top:28px;">
+                    <span style="display:inline-block; margin:0 8px 10px 0; padding:10px 16px; border-radius:12px; background:#ffffff; color:#08795f; font-weight:800;">
+                        QR page per store
+                    </span>
+                    <span style="display:inline-block; margin:0 8px 10px 0; padding:10px 16px; border-radius:12px; background:#ffffff; color:#08795f; font-weight:800;">
+                        Barcode scan
+                    </span>
+                    <span style="display:inline-block; margin:0 8px 10px 0; padding:10px 16px; border-radius:12px; background:#ffffff; color:#08795f; font-weight:800;">
+                        Pricelist-aware
+                    </span>
+                </div>
+            </div>
+            <div style="display:inline-block; width:40%; min-width:300px; vertical-align:middle; text-align:center; box-sizing:border-box;">
+                <img src="price_checker_scan_screenshot.png"
+                     alt="POS Price Checker mobile scan screen"
+                     style="display:inline-block; width:45%; min-width:125px; max-width:210px; height:auto; margin:0 6px; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.28); vertical-align:middle;"/>
+                <img src="price_checker_result_screenshot.png"
+                     alt="POS Price Checker mobile price result screen"
+                     style="display:inline-block; width:45%; min-width:125px; max-width:210px; height:auto; margin:34px 0 0 6px; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.28); vertical-align:middle;"/>
+            </div>
+        </div>
+    </section>
+
+    <section style="text-align:center; margin:0 0 34px;">
+        <h2 style="color:#075f4d; font-size:34px; line-height:1.25; font-weight:900; margin:0 0 12px;">
+            Built for real store-floor price checks
+        </h2>
+        <p style="max-width:850px; margin:0 auto; color:#50615c; font-size:20px; line-height:1.55;">
+            No kiosk hardware, no backend login and no website chrome. Just a focused,
+            customer-facing price checker page that works from a phone camera.
+        </p>
+    </section>
+
+    <section style="margin:0 0 34px; padding:34px 20px; border-radius:22px; background:#f4fbf8;">
+        <div style="display:inline-block; width:33%; min-width:280px; vertical-align:top; padding:10px; box-sizing:border-box;">
+            <div style=" padding:28px; border-radius:18px; background:#ffffff; box-shadow:0 12px 35px rgba(7,95,77,.10); box-sizing:border-box;">
+                <div style="width:56px; height:56px; border-radius:16px; background:#08795f; color:white; text-align:center; line-height:56px; font-size:24px; font-weight:900; margin-bottom:18px;">
+                    URL
+                </div>
+                <h3 style="color:#073f35; font-size:22px; font-weight:900; margin:0 0 12px;">Public store URL</h3>
+                <p style="color:#5a6b66; line-height:1.7; margin:0;">
+                    Each PoS store receives a dedicated public URL such as
+                    <code>/price-check/store-a</code>. The slug is generated automatically and remains editable.
+                </p>
+            </div>
+        </div>
+        <div style="display:inline-block; width:33%; min-width:280px; vertical-align:top; padding:10px; box-sizing:border-box;">
+            <div style=" padding:28px; border-radius:18px; background:#ffffff; box-shadow:0 12px 35px rgba(7,95,77,.10); box-sizing:border-box;">
+                <div style="width:56px; height:56px; border-radius:16px; background:#12aa7a; color:white; text-align:center; line-height:56px; font-size:24px; font-weight:900; margin-bottom:18px;">
+                    BAR
+                </div>
+                <h3 style="color:#073f35; font-size:22px; font-weight:900; margin:0 0 12px;">Phone camera scanning</h3>
+                <p style="color:#5a6b66; line-height:1.7; margin:0;">
+                    Uses the browser <code>BarcodeDetector</code>, plus manual barcode entry for unsupported devices.
+                </p>
+            </div>
+        </div>
+        <div style="display:inline-block; width:33%; min-width:280px; vertical-align:top; padding:10px; box-sizing:border-box;">
+            <div style=" padding:28px; border-radius:18px; background:#ffffff; box-shadow:0 12px 35px rgba(7,95,77,.10); box-sizing:border-box;">
+                <div style="width:56px; height:56px; border-radius:16px; background:#ffb74d; color:white; text-align:center; line-height:56px; font-size:24px; font-weight:900; margin-bottom:18px;">
+                    AED
+                </div>
+                <h3 style="color:#073f35; font-size:22px; font-weight:900; margin:0 0 12px;">Accurate Odoo pricing</h3>
+                <p style="color:#5a6b66; line-height:1.7; margin:0;">
+                    Computes the product price from the configured pricelist, store currency and
+                    tax display setting, including discount indication.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin:0 0 34px;">
+        <h2 style="text-align:center; color:#075f4d; font-size:34px; line-height:1.25; font-weight:900; margin:0 0 24px;">Mobile experience</h2>
+        <div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; padding:10px; box-sizing:border-box; text-align:center;">
+            <div style="padding:20px; border-radius:22px; background:#f4fbf8; box-sizing:border-box;">
+                <img src="price_checker_result_screenshot.png"
+                     alt="Scan barcode from mobile browser"
+                     style="display:block; width:auto; max-width:100%; max-height:620px; height:auto; margin:0 auto; border-radius:22px; box-shadow:0 18px 45px rgba(7,95,77,.14);"/>
+                <h3 style="color:#073f35; font-size:24px; font-weight:900; margin:20px 0 10px;">Scan the barcode</h3>
+                <p style="color:#5a6b66; line-height:1.7; margin:0;">
+                    Customers open the store QR page and point the camera at any product barcode.
+                </p>
+            </div>
+        </div>
+        <div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; padding:10px; box-sizing:border-box; text-align:center;">
+            <div style="padding:20px; border-radius:22px; background:#f4fbf8; box-sizing:border-box;">
+                <img src="price_checker_scan_screenshot.png"
+                     alt="View product price on mobile browser"
+                     style="display:block; width:auto; max-width:100%; max-height:620px; height:auto; margin:0 auto; border-radius:22px; box-shadow:0 18px 45px rgba(7,95,77,.14);"/>
+                <h3 style="color:#073f35; font-size:24px; font-weight:900; margin:20px 0 10px;">View the exact price</h3>
+                <p style="color:#5a6b66; line-height:1.7; margin:0;">
+                    The result page shows product details, price, tax handling and applicable discount.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin:0 0 34px; padding:34px 26px; border-radius:22px; background:#f4fbf8;">
+        <h2 style="text-align:center; color:#075f4d; font-size:34px; line-height:1.25; font-weight:900; margin:0 0 20px;">Included capabilities</h2>
+        <div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; box-sizing:border-box;">
+            <ul style="font-size:16px; line-height:2; color:#40524d; margin:0;">
+                <li><b>EAN-13 / UPC-A cross lookup</b> for equivalent barcodes.</li>
+                <li><b>Product image and details</b> for customer confirmation.</li>
+                <li><b>Tax included or excluded display</b> based on configuration.</li>
+            </ul>
+        </div>
+        <div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; box-sizing:border-box;">
+            <ul style="font-size:16px; line-height:2; color:#40524d; margin:0;">
+                <li><b>Discount visibility</b> when pricelist rules reduce the price.</li>
+                <li><b>Standalone public page</b> optimized for mobile use.</li>
+                <li><b>Printable QR code</b> for shelves, counters or store entrances.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section style="margin:0 0 34px;">
+        <h2 style="text-align:center; color:#075f4d; font-size:34px; line-height:1.25; font-weight:900; margin:0 0 24px;">Configuration</h2>
+        <div style="padding:30px; border-radius:20px; background:#ffffff; box-shadow:0 12px 35px rgba(7,95,77,.10); box-sizing:border-box;">
+            <ol style="font-size:16px; line-height:1.9; color:#40524d; margin-top:0;">
+                <li>Go to <b>Point of Sale &gt; Configuration</b> and open a PoS store.</li>
+                <li>Open the <b>Price Checker</b> tab.</li>
+                <li>Enable <b>Price Checker</b>. A public URL slug is generated automatically.</li>
+                <li>Select whether prices are shown as <b>tax-included</b> or <b>tax-excluded</b>.</li>
+                <li>Optionally configure a dedicated pricelist for the price checker.</li>
+                <li>Save, copy the public URL or print the generated QR code.</li>
+            </ol>
+            <div style="margin-top:22px; padding:16px 18px; border-radius:12px; border:0; background:#fff7e6; color:#6d4b13; line-height:1.7;">
+                <b>Requirement:</b> install the Python <code>qrcode</code> library to render QR codes:
+                <code>pip install qrcode</code>.
+            </div>
+            <div style="margin-top:28px; text-align:center;">
+                <img src="price_checker_configuration_screenshot.png"
+                     alt="POS Price Checker configuration screen"
+                     style="display:block; width:auto; max-width:100%; height:auto; margin:0 auto; border-radius:16px; box-shadow:0 18px 45px rgba(7,95,77,.14);"/>
+                <p style="margin:16px auto 0; max-width:760px; color:#5a6b66; line-height:1.7;">
+                    Configure the public page, slug, pricing behavior and QR code directly from the
+                    PoS store form.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin:0 0 24px;">
+        <div style="padding:34px; border-radius:20px; background:#073f35; text-align:center;">
+            <h2 style="color:#ffffff; font-size:30px; line-height:1.25; font-weight:900; margin:0 0 12px;">Free and open source</h2>
+            <p style="max-width:760px; margin:0 auto; color:#dff8ef; font-size:16px; line-height:1.7;">
+                Licensed under LGPL-3. Works with Odoo 19 Community and Enterprise, with no website
+                dependency required for the customer-facing price-checking page.
+            </p>
+        </div>
+    </section>
+
+    <section style="margin:0 0 24px;">
+        <div style="padding:34px; border-radius:20px; background:#f4fbf8; text-align:center; border:1px solid #d7eee6;">
+            <h2 style="color:#075f4d; font-size:30px; line-height:1.25; font-weight:900; margin:0 0 12px;">Need Help or Support?</h2>
+            <p style="max-width:760px; margin:0 auto 14px; color:#40524d; font-size:16px; line-height:1.7;">
+                Questions, installation assistance, or feedback are always welcome.
+            </p>
+            <p style="margin:0; color:#40524d; font-size:17px;">
+                <b>Support:</b>
+                <a href="mailto:erpmitchellodoo@gmail.com" style="color:#08795f; font-weight:800;">
+                    erpmitchellodoo@gmail.com
+                </a>
+            </p>
+        </div>
+    </section>
+
+</div>
