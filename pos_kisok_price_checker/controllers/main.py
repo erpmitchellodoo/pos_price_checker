@@ -39,7 +39,7 @@ class PosPriceChecker(http.Controller):
         store = self._get_store(slug)
         if not store:
             raise request.not_found()
-        return request.render('pos_price_checker.price_checker_page', {
+        return request.render('pos_kisok_price_checker.price_checker_page', {
             'store': store,
         })
 

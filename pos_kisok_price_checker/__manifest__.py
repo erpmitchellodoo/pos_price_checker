@@ -1,11 +1,11 @@
 {
-    'name': 'POS Price Checker',
+    'name': 'pos_kisok_price_checker',
     'version': '19.0.1.0.0',
     'category': 'Point of Sale',
     'summary': 'Mobile-friendly website price checker per POS store',
     'description': """
-POS Price Checker
-=================
+pos_kisok_price_checker
+=======================
 
 Give every PoS store its own public, mobile-friendly price-checking page
 (``/price-check/<slug>``) where customers scan a product barcode with their
@@ -67,9 +67,9 @@ Requirements
     ],
     'assets': {
         'web.assets_frontend': [
-            'pos_price_checker/static/src/scss/price_checker.scss',
-            'pos_price_checker/static/src/xml/price_checker_templates.xml',
-            'pos_price_checker/static/src/js/price_checker.js',
+            'pos_kisok_price_checker/static/src/scss/price_checker.scss',
+            'pos_kisok_price_checker/static/src/xml/price_checker_templates.xml',
+            'pos_kisok_price_checker/static/src/js/price_checker.js',
         ],
     },
     'installable': True,

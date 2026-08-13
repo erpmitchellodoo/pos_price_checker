@@ -16,7 +16,7 @@ import {
  * fallback), queries the store-specific price and displays the result.
  */
 export class PriceChecker extends Component {
-    static template = "pos_price_checker.PriceChecker";
+    static template = "pos_kisok_price_checker.PriceChecker";
     static components = { BarcodeVideoScanner };
     static props = {
         slug: { type: String },
@@ -123,4 +123,4 @@ export class PriceChecker extends Component {
     }
 }
 
-registry.category("public_components").add("pos_price_checker.PriceChecker", PriceChecker);
+registry.category("public_components").add("pos_kisok_price_checker.PriceChecker", PriceChecker);

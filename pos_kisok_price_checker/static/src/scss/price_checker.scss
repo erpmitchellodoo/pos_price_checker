@@ -2,7 +2,7 @@
 // Price checker public page
 // ===========================================================================
 
-.pos_price_checker_page {
+.pos_kisok_price_checker_page {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -62,7 +62,7 @@
 // Price checker component
 // ===========================================================================
 
-.pos_price_checker {
+.pos_kisok_price_checker {
     // Brand-green primary buttons
     .btn-primary {
         background-color: #081849;
@@ -171,7 +171,7 @@
         border-radius: 2px;
         background: linear-gradient(90deg, transparent, #4ade80, transparent);
         box-shadow: 0 0 14px rgba(74, 222, 128, 0.9);
-        animation: pos_price_checker_scan 2.4s ease-in-out infinite;
+        animation: pos_kisok_price_checker_scan 2.4s ease-in-out infinite;
     }
 
     // ------------------------------------------------------------------
@@ -269,7 +269,7 @@
     }
 
     &__result {
-        animation: pos_price_checker_fade 0.25s ease-in;
+        animation: pos_kisok_price_checker_fade 0.25s ease-in;
     }
 }
 
@@ -277,7 +277,7 @@
 // Animations
 // ---------------------------------------------------------------------------
 
-@keyframes pos_price_checker_scan {
+@keyframes pos_kisok_price_checker_scan {
     0%,
     100% {
         top: 12%;
@@ -288,7 +288,7 @@
     }
 }
 
-@keyframes pos_price_checker_fade {
+@keyframes pos_kisok_price_checker_fade {
     from {
         opacity: 0;
         transform: translateY(6px);
