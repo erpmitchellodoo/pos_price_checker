@@ -56,7 +56,7 @@ Requirements
     'website': '',
     'license': 'LGPL-3',
     'images': [
-        'static/description/appstore_banner.png',
+        'static/description/appstore_banner_screenshot.png',
         'static/description/price_checker_scan_screenshot.png',
         'static/description/price_checker_result_screenshot.png',
         'static/description/price_checker_configuration_screenshot.png',
