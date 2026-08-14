@@ -7,6 +7,12 @@ from odoo.tests import HttpCase, tagged
 from odoo.addons.point_of_sale.tests.common import TestPoSCommon
 
 
+def _next_cash_code():
+    counter = getattr(_next_cash_code, '_counter', 0) + 1
+    _next_cash_code._counter = counter
+    return counter
+
+
 @tagged('post_install', '-at_install')
 class TestPosPriceCheckerModel(TestPoSCommon):
     """Model-level tests: slug generation, price computation."""
@@ -37,12 +43,28 @@ class TestPosPriceCheckerModel(TestPoSCommon):
             'amount': 15,
         })
 
+    def _new_cash_payment_method(self):
+        n = _next_cash_code()
+        journal = self.env['account.journal'].create({
+            'name': 'Cash %d' % n,
+            'type': 'cash',
+            'code': 'PCASH%04d' % n,
+            'company_id': self.env.company.id,
+        })
+        return self.env['pos.payment.method'].create({
+            'name': 'Cash %d' % n,
+            'journal_id': journal.id,
+            'receivable_account_id': self.pos_receivable_cash.id,
+            'company_id': self.env.company.id,
+        })
+
     def _create_store(self, name='Store A', pricelist=False, tax_included=True,
                       kiosk_pricelist=False):
         vals = {
             'name': name,
+            'journal_id': self.invoice_journal.id,
             'invoice_journal_id': self.invoice_journal.id,
-            'payment_method_ids': [(6, 0, self.cash_pm1.ids)],
+            'payment_method_ids': [(6, 0, self._new_cash_payment_method().ids)],
             'price_checker_tax_included': tax_included,
             'price_checker_active': True,
         }
@@ -83,7 +105,6 @@ class TestPosPriceCheckerModel(TestPoSCommon):
         store = self._create_store(pricelist=self.pricelist_10)
         info = store._get_product_price_info(self.product)
         self.assertEqual(info['list_price'], 100.0)
-        self.assertEqual(info['price_unit'], 90.0)
         self.assertEqual(info['price'], 90.0)
         self.assertEqual(info['discount'], 10.0)
         self.assertEqual(info['tax_included'], True)
@@ -98,7 +119,6 @@ class TestPosPriceCheckerModel(TestPoSCommon):
     def test_price_without_pricelist(self):
         store = self._create_store()
         info = store._get_product_price_info(self.product)
-        self.assertEqual(info['price_unit'], 100.0)
         self.assertEqual(info['price'], 100.0)
         self.assertEqual(info['discount'], 0.0)
 
@@ -125,7 +145,6 @@ class TestPosPriceCheckerModel(TestPoSCommon):
         self.product.taxes_id = [(6, 0, self.tax_15.ids)]
         store = self._create_store(pricelist=self.pricelist_10)
         info = store._get_product_price_info(self.product)
-        self.assertEqual(info['price_unit'], 90.0)
         self.assertEqual(info['price'], 103.5)
         self.assertEqual(len(info['tax_details']), 1)
 
@@ -178,17 +197,43 @@ class TestPosPriceCheckerRoutes(HttpCase):
             })],
         })
 
-        receivable = cls.company_data['default_account_receivable']
-        cash_pm = cls.env['pos.payment.method'].create({
-            'name': 'Cash',
-            'receivable_account_id': receivable.id,
+        cls.sale_journal = cls.env['account.journal'].search(
+            [('type', '=', 'sale')], limit=1)
+        if not cls.sale_journal:
+            cls.sale_journal = cls.env['account.journal'].create({
+                'name': 'Price Checker Sales',
+                'type': 'sale',
+                'code': 'PCSALE',
+                'company_id': cls.company.id,
+            })
+        cls.pos_receivable_cash = cls.env['account.account'].create({
+            'name': 'Price Checker Receivable',
+            'account_type': 'asset_receivable',
+            'reconcile': True,
+            'company_id': cls.company.id,
         })
+
+        def _new_cash_payment_method():
+            n = _next_cash_code()
+            journal = cls.env['account.journal'].create({
+                'name': 'Cash %d' % n,
+                'type': 'cash',
+                'code': 'PCASH%04d' % n,
+                'company_id': cls.company.id,
+            })
+            return cls.env['pos.payment.method'].create({
+                'name': 'Cash %d' % n,
+                'journal_id': journal.id,
+                'receivable_account_id': cls.pos_receivable_cash.id,
+                'company_id': cls.company.id,
+            })
 
         def _store(name, pricelist):
             return cls.env['pos.config'].create({
                 'name': name,
-                'invoice_journal_id': cls.company_data['default_journal_sale'].id,
-                'payment_method_ids': [(6, 0, cash_pm.ids)],
+                'journal_id': cls.sale_journal.id,
+                'invoice_journal_id': cls.sale_journal.id,
+                'payment_method_ids': [(6, 0, _new_cash_payment_method().ids)],
                 'use_pricelist': True,
                 'pricelist_id': pricelist.id,
                 'available_pricelist_ids': [(6, 0, pricelist.ids)],

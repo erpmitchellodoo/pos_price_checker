@@ -22,6 +22,12 @@ product barcode with their phone camera and see the price applied at **that stor
 
 ## Demo
 
+![Demo](static/description/demo.gif)
+
+| Scan a barcode | Instant price | Per-store configuration |
+| --- | --- | --- |
+| ![Scan](static/description/screenshots/screenshot_scan.png) | ![Price](static/description/screenshots/screenshot_price.png) | ![Config](static/description/screenshots/screenshot_config.png) |
+
 ## Installation
 
 - Add this module directory to your `addons_path`.
@@ -63,7 +69,7 @@ product barcode with their phone camera and see the price applied at **that stor
 Run the test suite (requires the module to be installed):
 
 ```
-odoo --addons-path=addons,enterprise-19.0,custom --database=odoo19 \
+odoo --addons-path=addons,enterprise-18.0,custom --database=odoo18 \
      -i pos_kisok_price_checker --stop-after-init --test-enable
 ```
 
