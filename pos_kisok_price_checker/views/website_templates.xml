@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="price_checker_page" name="Price Checker Page">
+        <t t-call="web.frontend_layout">
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+            <t t-set="no_copyright" t-value="True"/>
+            <t t-set="title" t-value="store.name"/>
+
+            <div class="pos_kisok_price_checker_page">
+                <div class="pos_kisok_price_checker_page__shell">
+                    <div class="pos_kisok_price_checker_page__brand">
+
+                        <h1 class="pos_kisok_price_checker_page__title">
+                            <t t-esc="store.name"/>
+                        </h1>
+                        <p class="pos_kisok_price_checker_page__subtitle">
+                            Scan the product barcode to see the price
+                        </p>
+                    </div>
+                    <div class="pos_kisok_price_checker_page__card">
+                        <owl-component
+                            name="pos_kisok_price_checker.PriceChecker"
+                            t-att-props="json.dumps({
+                                'slug': store.price_checker_slug,
+                                'taxIncluded': store.price_checker_tax_included,
+                            })"
+                        />
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

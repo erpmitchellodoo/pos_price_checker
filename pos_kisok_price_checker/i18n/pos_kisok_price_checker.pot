@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-13 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: pos_kisok_price_checker
+#. string: Enable Price Checker
+msgid "Enable Price Checker"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Publish a public, mobile-friendly page where customers scan a product barcode to see the price applicable to this store.
+msgid "Publish a public, mobile-friendly page where customers scan a product barcode to see the price applicable to this store."
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Tax-Included Price
+msgid "Tax-Included Price"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Display the price including taxes on the price-checker page. If disabled, the price excluding taxes is displayed.
+msgid "Display the price including taxes on the price-checker page. If disabled, the price excluding taxes is displayed."
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: URL Slug
+msgid "URL Slug"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: e.g. store-a
+msgid "e.g. store-a"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Leave empty to generate it automatically from the store name.
+msgid "Leave empty to generate it automatically from the store name."
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Public URL
+msgid "Public URL"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: URL customers use to check the price of a product in this store.
+msgid "URL customers use to check the price of a product in this store."
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: QR Code
+msgid "QR Code"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Print this QR code and display it in the shop so customers can open the price checker from their phone.
+msgid "Print this QR code and display it in the shop so customers can open the price checker from their phone."
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Open Price Checker Page
+msgid "Open Price Checker Page"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Price Checker
+msgid "Price Checker"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Check product prices
+msgid "Check product prices"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Pricelist
+msgid "Pricelist"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Price list used on the price-checker page. If left empty, the store's default price list is used, or the product's standard price when the store has none.
+msgid "Price list used on the price-checker page. If left empty, the store's default price list is used, or the product's standard price when the store has none."
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Price Checker Pricelist
+msgid "Price Checker Pricelist"
+msgstr ""
+
+#. module: pos_kisok_price_checker
+#. string: Pricelist used on the public price-checker page. If left empty, the store's default pricelist is used, or the product's standard price if the store has no pricelist.
+msgid "Pricelist used on the public price-checker page. If left empty, the store's default pricelist is used, or the product's standard price if the store has no pricelist."
+msgstr ""
