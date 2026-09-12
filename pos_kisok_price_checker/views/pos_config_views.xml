@@ -33,6 +33,14 @@
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-4 o_light_label">
+                                <label string="Background Color" for="price_checker_background_color"/>
+                            </div>
+                            <div class="col-lg-8">
+                                <field name="price_checker_background_color" widget="color"/>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-4 o_light_label">
                                 <label string="URL Slug" for="price_checker_slug"/>
                             </div>
                             <div class="col-lg-8">
