@@ -7,7 +7,8 @@
             <t t-set="no_copyright" t-value="True"/>
             <t t-set="title" t-value="store.name"/>
 
-            <div class="pos_kisok_price_checker_page">
+            <div class="pos_kisok_price_checker_page"
+                 t-attf-style="background-color: {{ store.price_checker_background_color or '#081849' }};">
                 <div class="pos_kisok_price_checker_page__shell">
                     <div class="pos_kisok_price_checker_page__brand">
 

@@ -1,5 +1,5 @@
 {
-    'name': 'pos_kisok_price_checker',
+    'name': 'POS KISOK PRICE CHECKER',
     'version': '18.0.1.0.0',
     'category': 'Point of Sale',
     'summary': 'Mobile-friendly website price checker per POS store',
