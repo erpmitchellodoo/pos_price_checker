@@ -7,6 +7,7 @@ import re
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools.image import image_data_uri
 
 _logger = logging.getLogger(__name__)
 
@@ -43,6 +44,10 @@ class PosConfig(models.Model):
         help="Pricelist used on the public price-checker page. If left empty, "
              "the store's default pricelist is used, or the product's standard "
              "price if the store has no pricelist.",
+    )
+    price_checker_background_color = fields.Char(
+        string="Background Color",
+        default='#081849',
     )
     price_checker_url = fields.Char(
         string="Price Checker URL",
@@ -242,7 +247,7 @@ class PosConfig(models.Model):
         display_price = price_with_tax if self.price_checker_tax_included else price_without_tax
         image_src = False
         if product.image_128:
-            image_src = 'data:image/png;base64,%s' % base64.b64encode(product.image_128).decode()
+            image_src = image_data_uri(product.image_128)
 
         return {
             'product_id': product.id,
