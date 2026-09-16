@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { Component, onMounted, useRef, useState } from "@odoo/owl";
+import { Component, onMounted, onWillUnmount, useEffect, useRef, useState } from "@odoo/owl";
 import { rpc } from "@web/core/network/rpc";
 import { registry } from "@web/core/registry";
 import { _t } from "@web/core/l10n/translation";
@@ -28,6 +28,9 @@ export class PriceChecker extends Component {
 
     setup() {
         this.root = useRef("root");
+        this.barcodeInput = useRef("barcodeInput");
+        this.lookupSequence = 0;
+        onWillUnmount(() => this.lookupSequence++);
         onMounted(() => {
             const page = this.root.el.closest(".pos_kisok_price_checker_page");
             if (!page) {
@@ -56,6 +59,15 @@ export class PriceChecker extends Component {
             product: null,
             message: "",
         });
+        useEffect(() => {
+            if (["idle", "success", "not_found", "error"].includes(this.state.screen)) {
+                this.barcodeInput.el?.focus({ preventScroll: true });
+            }
+            if (this.state.screen === "success") {
+                const timer = setTimeout(() => this.resetToIdle(), 15000);
+                return () => clearTimeout(timer);
+            }
+        }, () => [this.state.screen, this.state.product]);
     }
 
     // ------------------------------------------------------------------
@@ -100,6 +112,7 @@ export class PriceChecker extends Component {
         if (!barcode) {
             return;
         }
+        const sequence = ++this.lookupSequence;
         this.state.screen = "loading";
         this.state.product = null;
         this.state.message = "";
@@ -108,6 +121,9 @@ export class PriceChecker extends Component {
                 slug: this.props.slug,
                 barcode,
             });
+            if (sequence !== this.lookupSequence) {
+                return;
+            }
             if (result.status === "success") {
                 this.state.screen = "success";
                 this.state.product = result.product;
@@ -119,13 +135,28 @@ export class PriceChecker extends Component {
                 this.state.message = result.message;
             }
         } catch (error) {
+            if (sequence !== this.lookupSequence) {
+                return;
+            }
             this.state.screen = "error";
             this.state.message = error.message || _t("Something went wrong. Please try again.");
         }
     }
 
-    scanAnother() {
+    resetToIdle() {
+        this.lookupSequence++;
         this.state.lastBarcode = "";
+        this.state.manualBarcode = "";
+        this.state.product = null;
+        this.state.message = "";
+        this.state.scannerReady = false;
+        this.state.screen = "idle";
+    }
+
+    scanAnother() {
+        this.lookupSequence++;
+        this.state.lastBarcode = "";
+        this.state.manualBarcode = "";
         this.state.product = null;
         this.state.message = "";
         this.state.screen = this.state.scannerReady ? "camera" : "idle";

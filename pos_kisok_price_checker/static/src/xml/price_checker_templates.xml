@@ -60,6 +60,7 @@
                     <input
                         type="text"
                         id="pos_kisok_price_checker_barcode"
+                        t-ref="barcodeInput"
                         class="form-control"
                         placeholder="Product barcode"
                         inputmode="numeric"
