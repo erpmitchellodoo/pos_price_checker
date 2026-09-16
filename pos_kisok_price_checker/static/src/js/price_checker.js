@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { Component, useState } from "@odoo/owl";
+import { Component, onMounted, useRef, useState } from "@odoo/owl";
 import { rpc } from "@web/core/network/rpc";
 import { registry } from "@web/core/registry";
 import { _t } from "@web/core/l10n/translation";
@@ -27,6 +27,26 @@ export class PriceChecker extends Component {
     };
 
     setup() {
+        this.root = useRef("root");
+        onMounted(() => {
+            const page = this.root.el.closest(".pos_kisok_price_checker_page");
+            if (!page) {
+                return;
+            }
+            // The browser normalizes the configured color to RGB, including named colors.
+            const channels = getComputedStyle(page).backgroundColor.match(/[\d.]+/g).map(Number);
+            const alpha = channels[3] ?? 1;
+            const linear = channels.slice(0, 3).map((channel) => {
+                const value = (channel * alpha + 255 * (1 - alpha)) / 255;
+                return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+            });
+            const luminance = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722;
+            // Prefer slate when it meets 4.5:1; otherwise choose white or black.
+            const color = (luminance + 0.05) / (0.00919 + 0.05) >= 4.5
+                ? "#0f172a"
+                : 1.05 / (luminance + 0.05) >= 4.5 ? "#ffffff" : "#000000";
+            page.style.setProperty("--price-checker-brand-color", color);
+        });
         this.state = useState({
             screen: "idle", // idle | camera | loading | success | not_found | error
             scannerSupported: isBarcodeScannerSupported(),

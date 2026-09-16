@@ -17,7 +17,7 @@
 
     &__brand {
         text-align: center;
-        color: #fff;
+        color: var(--price-checker-brand-color, #fff);
         margin-bottom: 20px;
         padding: 0 8px;
     }
@@ -41,17 +41,18 @@
         font-weight: 800;
         letter-spacing: -0.02em;
         margin: 0 0 4px;
-        text-shadow: 0 2px 8px rgba(15, 75, 40, 0.35);
+        color: inherit;
     }
 
     &__subtitle {
         margin: 0;
-        opacity: 0.92;
+        color: inherit;
         font-size: 0.95rem;
     }
 
     &__card {
         background: #fff;
+        color: #0f172a;
         border-radius: 24px;
         box-shadow: 0 24px 60px rgba(13, 80, 40, 0.35);
         padding: 22px 20px 24px;
@@ -63,8 +64,38 @@
 // ===========================================================================
 
 .pos_kisok_price_checker {
-    // Brand-green primary buttons
+    color: #0f172a;
+
+    h3 {
+        color: #0f172a;
+    }
+
+    .text-muted {
+        color: #475569 !important;
+    }
+
+    .text-success {
+        color: #15803d !important;
+    }
+
+    .badge.bg-success {
+        color: #fff;
+        background-color: #15803d !important;
+    }
+
+    .form-control {
+        color: #0f172a;
+        background-color: #fff;
+
+        &::placeholder {
+            color: #475569;
+            opacity: 1;
+        }
+    }
+
+    // Keep button labels readable independently of the website theme.
     .btn-primary {
+        color: #fff;
         background-color: #081849;
         border-color: #081849;
 
@@ -72,6 +103,7 @@
         &:focus,
         &:active,
         &.active {
+            color: #fff;
             background-color: #081849;
             border-color: #081849;
         }
@@ -190,7 +222,7 @@
     }
 
     &__hint {
-        color: #6b7280;
+        color: #475569;
         font-size: 0.95rem;
         margin-left: auto;
         margin-right: auto;
@@ -205,7 +237,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        color: #9ca3af;
+        color: #475569;
         font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.06em;
@@ -245,7 +277,7 @@
     }
 
     &__barcode {
-        color: #9ca3af;
+        color: #475569;
         font-size: 0.85rem;
     }
 
@@ -264,7 +296,7 @@
     }
 
     &__tax-note {
-        color: #4b7d5c;
+        color: #166534;
         font-size: 0.85rem;
     }
 

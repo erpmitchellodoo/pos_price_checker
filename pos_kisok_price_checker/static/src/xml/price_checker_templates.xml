@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="pos_kisok_price_checker.PriceChecker">
-        <div class="pos_kisok_price_checker">
+        <div class="pos_kisok_price_checker" t-ref="root">
             <!-- Camera scanner -->
             <div t-if="state.screen === 'camera'" class="pos_kisok_price_checker__scanner">
                 <div class="pos_kisok_price_checker__camera">
